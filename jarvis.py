@@ -105,7 +105,13 @@ if __name__ == "__main__":
             os.system("shutdown /s /t 1")
 
         elif "restart" in query:
-            os.system("shutdown /r /t 1")        
+            os.system("shutdown /r /t 1")
+
+        elif "play songs" in query:
+            songs_dir = "C:\Users\Thea\Music\Songs"
+            songs = os.list_dir(songs_dir)
+            os.startfile(os.path.join(songs_dir, songs[0]))
+
 
 
 #        elif  'send email' in query:
