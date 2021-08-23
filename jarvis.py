@@ -3,6 +3,8 @@ import datetime
 import speech_recognition as sr # pip install SpeechRecogntion
 import pyaudio
 import wikipedia # pip install wikipedia
+#import smtplib
+import webbrowser as wb
 
 engine = pyttsx3.init()
 
@@ -60,6 +62,16 @@ def command():
 
     return query
 
+#def sendEmail(to, content):
+#    server = smtplib.SMTP('smtp.gmail.com', 587)
+#    server.ehlo()
+#    server.starttls()
+#    server.login("bla@gmail.com", "123")    
+#    server.sendmail("bla@gmail.com", to, content)
+#    server.close()
+
+
+
 if __name__ == "__main__":
     wishme()
     while True:
@@ -77,6 +89,25 @@ if __name__ == "__main__":
             result = wikipedia.summary(query, sentences=2)
             print(result)
             speak(result)
+
+        elif "search in chrome" in query:
+            speak("What should I search?")
+            chromepath = r"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
+            search = command().lower()
+            wb.get(chromepath).open_new_tab(search+".com")
+
+
+#        elif  'send email' in query:
+#            try:
+#                speak("what should I say?")
+#                content = command()
+#                to = "blabla@gmail.com"
+#                sendEmail(to, content)
+#                speak("Email sent")
+#           except Exception as e:
+#                print(e)
+#                speak("Sorry, something went wrong!")
+
 
         elif 'offline' in query:
             quit()
