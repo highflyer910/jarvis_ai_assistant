@@ -5,6 +5,7 @@ import pyaudio
 import wikipedia # pip install wikipedia
 #import smtplib
 import webbrowser as wb
+import os
 
 engine = pyttsx3.init()
 
@@ -95,6 +96,16 @@ if __name__ == "__main__":
             chromepath = r"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
             search = command().lower()
             wb.get(chromepath).open_new_tab(search+".com")
+
+
+        elif "logout" in query:
+            os.system("shutdown -1")
+
+        elif "shut down" in query:
+            os.system("shutdown /s /t 1")
+
+        elif "restart" in query:
+            os.system("shutdown /r /t 1")        
 
 
 #        elif  'send email' in query:
