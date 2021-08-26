@@ -7,6 +7,7 @@ import wikipedia # pip install wikipedia
 import webbrowser as wb
 import os
 import pyautogui # pip install pyautogui
+import psutil # pip install psutil
 
 engine = pyttsx3.init()
 
@@ -76,6 +77,13 @@ def screenshot():
     img = pyautogui.screenshot()
     img.save('C:\Users\Thea\Desktop\jarvis_ai_assistant/screenshot.png')
 
+def cpu():
+    usage = str(psutil.cpu_percent())
+    speak("CPU is at" + usage)
+    battery = psutil.sensors_battery()
+    speak("Battery is")
+    speak(battery.percent)    
+
 if __name__ == "__main__":
     wishme()
     while True:
@@ -129,7 +137,10 @@ if __name__ == "__main__":
 
         elif "screenshot" in query:
             screenshot()
-            speak("Screenshot taken")    
+            speak("Screenshot taken")
+
+        elif "cpu" in query:
+            cpu() 
     
 #        elif  'send email' in query:
 #            try:
