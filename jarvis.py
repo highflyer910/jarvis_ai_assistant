@@ -6,6 +6,7 @@ import wikipedia # pip install wikipedia
 #import smtplib
 import webbrowser as wb
 import os
+import pyautogui # pip install pyautogui
 
 engine = pyttsx3.init()
 
@@ -71,7 +72,9 @@ def command():
 #    server.sendmail("bla@gmail.com", to, content)
 #    server.close()
 
-
+def screenshot():
+    img = pyautogui.screenshot()
+    img.save('C:\Users\Thea\Desktop\jarvis_ai_assistant/screenshot.png')
 
 if __name__ == "__main__":
     wishme()
@@ -122,10 +125,12 @@ if __name__ == "__main__":
 
         elif "do you remember anything" in query:
             remember = open("data.txt", "r")
-            speak("You told me to remember that "+remember.read())  
+            speak("You told me to remember that "+remember.read())
 
-
-
+        elif "screenshot" in query:
+            screenshot()
+            speak("Screenshot taken")    
+    
 #        elif  'send email' in query:
 #            try:
 #                speak("what should I say?")
